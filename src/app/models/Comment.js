@@ -7,14 +7,20 @@ class Comment extends Model {
 				commentId: {
 					type: DataTypes.INTEGER,
 					primaryKey: true,
+					autoIncrement: true,
 				},
 				content: DataTypes.STRING,
-				created_at: DataTypes.DATE,
+				createdAt: DataTypes.DATE,
 			},
 			{
 				sequelize,
+				name: {
+					singular: "comment",
+					plural: "comments",
+				},
 				tableName: "comments",
 				timestamps: true,
+				updatedAt: false,
 			}
 		);
 	}

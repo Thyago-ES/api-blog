@@ -9,15 +9,23 @@ class Post extends Model {
 				postId: {
 					type: DataTypes.INTEGER,
 					primaryKey: true,
+					autoIncrement: true,
 				},
 				content: DataTypes.STRING,
 				category: DataTypes.ENUM(postCategories),
-				created_at: DataTypes.DATE,
+				createdAt: {
+					type: DataTypes.DATE,
+				},
 			},
 			{
 				sequelize,
+				name: {
+					singular: "post",
+					plural: "posts",
+				},
 				tableName: "posts",
 				timestamps: true,
+				updatedAt: false,
 			}
 		);
 	}
