@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Post = require("../models/Post");
 
 const Yup = require("yup");
 const bcrypt = require("bcryptjs");
@@ -10,6 +11,12 @@ class UserController {
 				attributes: {
 					exclude: ["password"],
 				},
+				include: [
+					{
+						model: Post,
+						attributes: ["postId", "content", "category"],
+					},
+				],
 			});
 
 			return res.status(200).json(users);
@@ -26,6 +33,10 @@ class UserController {
 				},
 				attributes: {
 					exclude: ["password"],
+				},
+				include: {
+					model: Post,
+					attributes: ["postId", "content", "category"],
 				},
 			});
 
