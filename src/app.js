@@ -1,6 +1,7 @@
 const express = require("express");
 
 const userRoutes = require("./app/routes/userRoutes");
+const postRoutes = require("./app/routes/postRoutes");
 
 require("./database");
 
@@ -17,6 +18,7 @@ class App {
 
 	routes() {
 		this.server.use("/users", userRoutes);
+		this.server.use("/users/:userId/posts", postRoutes);
 	}
 }
 
