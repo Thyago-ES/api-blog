@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 const Yup = require("yup");
 
@@ -12,6 +13,12 @@ class PostController {
 				attributes: {
 					exclude: ["userId"],
 				},
+				include: [
+					{
+						model: User,
+						attributes: ["userId", "name"],
+					},
+				],
 			});
 
 			return res.status(200).json(posts);
@@ -30,6 +37,12 @@ class PostController {
 				attributes: {
 					exclude: ["userId"],
 				},
+				include: [
+					{
+						model: User,
+						attributes: ["userId", "name"],
+					},
+				],
 			});
 
 			if (!post) {
@@ -97,6 +110,12 @@ class PostController {
 				attributes: {
 					exclude: ["userId"],
 				},
+				include: [
+					{
+						model: User,
+						attributes: ["userId", "name"],
+					},
+				],
 			});
 
 			if (!post) {
